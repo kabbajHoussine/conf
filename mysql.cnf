@@ -1,51 +1,20 @@
 [mysqld]
 
-key_buffer_size		= 240M
-max_allowed_packet	= 512M
-thread_stack		= 192K
-thread_cache_size       = 64
-innodb_read_io_threads = 2
-innodb_write_io_threads = 4
+# InnoDB
+innodb_buffer_pool_size = 8G
+innodb_flush_neighbors = 0
+innodb_thread_concurrency = 12
+innodb_write_io_threads = 8
+innodb_read_io_threads = 8
 
-max_connections        = 2625
-#table_cache            = 64
-thread_concurrency     = 11
+# Query cache
+query_cache_size = 256M
 
-query_cache_limit	= 8M
-tmp_table_size      = 32M
-query_cache_size        = 32M
+# Binary logging
+log_bin = /var/log/mysql/mysql-bin.log
+expire_logs_days = 7
+sync_binlog = 1
 
-innodb_log_file_size = 512M
-
-wait_timeout = 500
-interactive_timeout = 28800
-
-open_files_limit = 1024000
-skip-name-resolve
-
-join_buffer_size = 512K
-
-
-innodb_flush_log_at_trx_commit = 1
-innodb_log_buffer_size = 20M
-innodb_buffer_pool_size = 10G
-innodb_log_files_in_group = 2
-innodb_max_dirty_pages_pct = 90
-innodb_thread_concurrency = 180
-net_read_timeout = 120
-net_write_timeout = 120
-myisam_sort_buffer_size = 8M
-performance_schema = on
-read_buffer_size = 4M
-read_rnd_buffer_size = 8M
-sort_buffer_size = 4M
-sync_binlog = 16
-table_open_cache = 4000
-
-
-
-
-innodb_buffer_pool_instances = 10
-innodb_stats_persistent_sample_pages = 100
-innodb_stats_transient_sample_pages = 24
-innodb_rollback_on_timeout = on
+# Slow query log
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/mysql-
