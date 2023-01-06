@@ -1,17 +1,27 @@
 [mysqld]
 
-# InnoDB
+max_connections = 1000
+thread_cache_size = 128
+query_cache_size = 32M
+query_cache_type = 1
+key_buffer_size = 64M
+sort_buffer_size = 2M
+read_rnd_buffer_size = 2M
+join_buffer_size = 2M
+
+# InnoDB settings
 innodb_buffer_pool_size = 8G
-innodb_flush_neighbors = 0
-innodb_thread_concurrency = 12
-innodb_write_io_threads = 8
-innodb_read_io_threads = 8
+innodb_log_file_size = 512M
+innodb_flush_method = fsync
+innodb_flush_log_at_trx_commit = 1
+innodb_file_per_table = 1
+innodb_thread_concurrency = 8
 
-# Binary logging
-log_bin = /var/log/mysql/mysql-bin.log
-expire_logs_days = 7
-sync_binlog = 1
+# MyISAM settings
+myisam_sort_buffer_size = 128M
 
-# Slow query log
+# Logging
+log_error = /var/log/mysql/error.log
 slow_query_log = 1
-slow_query_log_file = /var/log/mysql/mysql-
+slow_query_log_file = /var/log/mysql/slow.log
+long_query_time = 1
