@@ -2,8 +2,6 @@
 
 max_connections = 1000
 thread_cache_size = 128
-query_cache_size = 32M
-query_cache_type = 1
 key_buffer_size = 64M
 sort_buffer_size = 2M
 read_rnd_buffer_size = 2M
