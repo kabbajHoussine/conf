@@ -7,9 +7,6 @@ innodb_thread_concurrency = 12
 innodb_write_io_threads = 8
 innodb_read_io_threads = 8
 
-# Query cache
-query_cache_size = 256M
-
 # Binary logging
 log_bin = /var/log/mysql/mysql-bin.log
 expire_logs_days = 7
